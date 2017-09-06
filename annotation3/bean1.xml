@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+<!-- <bean id="u1" class="setter.injection.University" autowire="byType" />
+
+<bean id="dept9" class="setter.injection.Department" >
+	<property name="departName" value= "Computer Science"></property>
+</bean>
+
+</beans> -->
+
+<context:annotation-config></context:annotation-config>
+<bean id="library" class="sample01.Library">
+        <property name="bookList">
+            <list>
+                <value>1</value>
+                <ref bean="book" />
+                <bean class="sample01.Book">
+                    <property name="author" value="walls" />
+                    <property name="year" value="2015" />
+                </bean>
+            </list>
+        </property>
+ 
+        <property name="bookSet">
+            <set>
+                <value>1</value>
+                <ref bean="book" />
+                <bean class="sample01.Book">
+                    <property name="author" value="james" />
+                    <property name="year" value="2014" />
+                </bean>
+            </set>
+        </property>
+ 
+        <property name="bookMap">
+            <map>
+                <entry key="Key 1" value="1" />
+                <entry key="Key 2" value-ref="book" />
+                <entry key="Key 3">
+                    <bean class="sample01.Book">
+                        <property name="author" value="martin" />
+                        <property name="year" value="2013" />
+                    </bean>
+                </entry>
+            </map>
+        </property>
+ 
+        <property name="bookProperties">
+            <props>
+                <prop key="admin">admin@xyz.com</prop>
+                <prop key="support">support@xyz.com</prop>
+            </props>
+        </property>
+    </bean>
+ 
+    <bean id="book" class="sample01.Book">
+        <property name="author" value="spring people" />
+        <property name="year" value="2010" />
+    </bean>
+</beans>
